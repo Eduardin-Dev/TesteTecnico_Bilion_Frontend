@@ -1,0 +1,50 @@
+/* src/components/ProductList.css */
+
+.product-list-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: sans-serif;
+    background-color: #f8f9fa; /* Fundo levemente cinza */
+}
+
+.main-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.product-grid {
+    display: grid;
+    /* Define 3 colunas, ajustando-se automaticamente ao tamanho do card */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px; /* Espaço entre os cards */
+    justify-content: center;
+}
+
+/* Estilo do Botão */
+.dashboard-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 20px 0;
+    
+    /* Cores e Aparência */
+    background-color: #007bff; /* Azul primário */
+    color: white;
+    text-decoration: none; /* Remove sublinhado do link */
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    
+    /* Efeito ao passar o mouse */
+    transition: background-color 0.3s ease;
+}
+
+.dashboard-button:hover {
+    background-color: #0056b3;
+}
+
+/* Opcional: Estilo para o body do seu App.css global */
+/* body { margin: 0; padding: 0; background-color: #f8f9fa; } */

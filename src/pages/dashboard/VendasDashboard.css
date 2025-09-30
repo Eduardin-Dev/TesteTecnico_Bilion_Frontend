@@ -1,0 +1,75 @@
+/* src/pages/SalesDashboard.css */
+.dashboard-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 30px;
+    font-family: sans-serif;
+    background-color: #f4f7f9;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #343a40;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+h2 {
+    color: #495057;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+/* KPI Grid Layout */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+/* Boxes para Gráfico e Tabela */
+.dashboard-chart-box, .dashboard-table-box {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 40px;
+}
+
+/* Tabela de Cursos */
+.course-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.course-table th, .course-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.course-table th {
+    background-color: #e9ecef;
+    color: #495057;
+    font-weight: 600;
+}
+
+.course-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+.link-to-products {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.link-to-products:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
