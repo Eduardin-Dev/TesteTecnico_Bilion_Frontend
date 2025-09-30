@@ -3,7 +3,7 @@ import Produto from './produto';
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import ProductModal from './../../components/ProdutctModal';
-import './ProdutosLista.css';
+import './produtosLista.css';
 import axios from 'axios';
 
 // URL base da sua API Node.js/Express
