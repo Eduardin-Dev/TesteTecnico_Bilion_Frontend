@@ -1,34 +1,32 @@
 // src/components/ProductList.jsx
 import Produto from './produto';
 import { Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ProductModal from './../../components/ProdutctModal';
 import './produtosLista.css';
 import axios from 'axios';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 // URL base da sua API Node.js/Express
 const API_URL = 'https://testetecnicobilionbackend-production.up.railway.app';
 
 function ProductList() {
-  // Estado para armazenar os dados recebidos da API
   const [data, setData] = useState([]); // <--- ESTADO COM OS DADOS DA API
-  // Estado para gerenciar o carregamento
   const [loading, setLoading] = useState(true);
-  // Estado para gerenciar erros
   const [error, setError] = useState(null);
 
   // Estados para o Modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // --- LÓGICA DE BUSCA DE DADOS (API) ---
+  // Buscando dados na API node
   useEffect(() => {
     async function fetchData() {
       try {
         setError(null);
         setLoading(true);
 
-        // Requisição GET usando Axios para a rota /listarProdutos
         const response = await axios.get(`${API_URL}/listarProdutos`);
 
         // Atualiza o estado 'data' com os produtos
@@ -61,26 +59,58 @@ function ProductList() {
       .toFixed(2)
       .replace('.', ',');
 
-    const isConfirmed = window.confirm(
-      `Você tem certeza que deseja comprar o produto: ${product.titulo} por R$ ${precoFormatado}?`,
-    );
+    const MySwal = withReactContent(Swal);
 
-    if (isConfirmed) {
-      // Apenas se o usuário clicou em "OK" na caixa de diálogo de confirmação
-      alert(`Processando compra do produto: ${product.titulo}`);
+    const result = await MySwal.fire({
+      title: 'Confirmação de Compra',
+      html: `Você tem certeza que deseja comprar o produto: <b>${product.titulo}</b> por <b>R$ ${precoFormatado}</b>?`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Sim, comprar!',
+      confirmButtonColor: 'green',
+      cancelButtonText: 'Cancelar',
+      buttonsStyling: true,
+    });
+
+    if (result.isConfirmed) {
+      MySwal.fire({
+        title: 'Processando...',
+        text: `Processando compra do produto: ${product.titulo}`,
+        icon: 'info',
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        didOpen: () => {
+          MySwal.showLoading(); // Mostra o spinner de loading
+        },
+      });
 
       try {
         await axios.post(`${API_URL}/produtoComprado`, {
           produto_id: product.id,
           dateBody: new Date().toISOString(),
         });
-        alert('Compra finalizada com sucesso!');
+
+        MySwal.fire({
+          title: 'Sucesso!',
+          text: 'Compra finalizada com sucesso!',
+          icon: 'success',
+          confirmButtonText: 'Ótimo!',
+        });
       } catch (e) {
-        alert('Erro ao processar a compra.', e);
+        MySwal.fire({
+          title: 'Erro!',
+          text: 'Erro ao processar a compra. Tente novamente mais tarde.',
+          icon: 'error',
+          footer: e.message, // mensagem de erro
+        });
       }
-    } else {
-      // Usuário clicou em "Cancelar"
-      alert(`Compra de ${product.titulo} cancelada.`);
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      //CLICOU EM CANCELAR
+      MySwal.fire(
+        'Cancelado',
+        `Compra de ${product.titulo} cancelada.`,
+        'error',
+      );
     }
 
     handleCloseModal(); // Fecha o modal após a ação (ou cancelamento)

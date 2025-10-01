@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   LineChart,
   Line,
@@ -15,7 +14,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-// URL base da sua API Node.js/Express
+// URL base da API
 const API_URL = 'https://testetecnicobilionbackend-production.up.railway.app';
 
 // Dados de Exemplo
@@ -43,7 +42,7 @@ function VendasDashboard() {
         setError(null);
         setLoading(true);
 
-        // Requisição 1: Métricas Gerais
+        // Métricas gerais
         const [metricasResponse, topCursosResponse] = await Promise.all([
           axios.get(`${API_URL}/dashboard/metricas`),
           axios.get(`${API_URL}/dashboard/cursosPorReceita`),
@@ -63,7 +62,6 @@ function VendasDashboard() {
     fetchData();
   }, []);
 
-  // 1. Lógica de Carregamento e Erro
   if (loading) {
     return <div className="dashboard-container">Carregando métricas...</div>;
   }
@@ -104,7 +102,7 @@ function VendasDashboard() {
       <h1>Dashboard de Vendas de Cursos</h1>
 
       <div style={{ marginBottom: '20px' }}>
-        <Link to="/" className="link-to-products">
+        <Link to="/" className="link-produtos">
           ← Voltar para o Catálogo de Produtos
         </Link>
       </div>
