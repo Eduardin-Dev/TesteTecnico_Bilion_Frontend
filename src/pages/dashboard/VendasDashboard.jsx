@@ -16,7 +16,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 // URL base da sua API Node.js/Express
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://testetecnicobilionbackend-production.up.railway.app';
 
 // Dados de Exemplo
 const dadosMesesFicticios = {

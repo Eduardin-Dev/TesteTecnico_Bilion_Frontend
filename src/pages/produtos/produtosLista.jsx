@@ -7,7 +7,7 @@ import './produtosLista.css';
 import axios from 'axios';
 
 // URL base da sua API Node.js/Express
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://testetecnicobilionbackend-production.up.railway.app';
 
 function ProductList() {
   // Estado para armazenar os dados recebidos da API
