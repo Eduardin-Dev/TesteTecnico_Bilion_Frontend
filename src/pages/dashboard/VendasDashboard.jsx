@@ -17,21 +17,10 @@ import { useEffect, useState } from 'react';
 // URL base da API
 const API_URL = 'https://testetecnicobilionbackend-production.up.railway.app';
 
-// Dados de Exemplo
-const dadosMesesFicticios = {
-  monthlySales: [
-    { month: 'Jan', revenue: 15000, sales: 80 },
-    { month: 'Fev', revenue: 18500, sales: 95 },
-    { month: 'Mar', revenue: 22000, sales: 110 },
-    { month: 'Abr', revenue: 19500, sales: 105 },
-    { month: 'Mai', revenue: 25000, sales: 130 },
-    { month: 'Jun', revenue: 28000, sales: 140 },
-  ],
-};
-
 function VendasDashboard() {
   const [metricas, setMetricas] = useState({});
   const [topCursos, setTopCursos] = useState([]);
+  const [graficoDados, setGraficoDados] = useState([]);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -43,13 +32,16 @@ function VendasDashboard() {
         setLoading(true);
 
         // Métricas gerais
-        const [metricasResponse, topCursosResponse] = await Promise.all([
-          axios.get(`${API_URL}/dashboard/metricas`),
-          axios.get(`${API_URL}/dashboard/cursosPorReceita`),
-        ]);
+        const [metricasResponse, topCursosResponse, vendasMensaisResponse] =
+          await Promise.all([
+            axios.get(`${API_URL}/dashboard/metricas`),
+            axios.get(`${API_URL}/dashboard/cursosPorReceita`),
+            axios.get(`${API_URL}/dashboard/graficoLinha`),
+          ]);
 
         setMetricas(metricasResponse.data);
         setTopCursos(topCursosResponse.data);
+        setGraficoDados(vendasMensaisResponse.data);
       } catch (err) {
         console.error('Erro na requisição:', err);
         setError(
@@ -113,16 +105,15 @@ function VendasDashboard() {
         ))}
       </div>
 
-      {/* DADOS SIMULADOS */}
       <div className="dashboard-chart-box">
         <h2>Vendas e Receita Mensal</h2>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart
-            data={dadosMesesFicticios.monthlySales}
+            data={graficoDados}
             margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-            <XAxis dataKey="month" />
+            <XAxis dataKey="mes" />
             <YAxis
               yAxisId="left"
               orientation="left"
@@ -144,7 +135,7 @@ function VendasDashboard() {
             <Line
               yAxisId="left"
               type="monotone"
-              dataKey="revenue"
+              dataKey="receita"
               stroke="#007bff"
               name="Receita"
               strokeWidth={2}
@@ -152,7 +143,7 @@ function VendasDashboard() {
             <Line
               yAxisId="right"
               type="monotone"
-              dataKey="sales"
+              dataKey="vendas"
               stroke="#28a745"
               name="Vendas"
               strokeWidth={2}
