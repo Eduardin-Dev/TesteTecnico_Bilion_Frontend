@@ -97,7 +97,7 @@ function VendasDashboard() {
 
       <div style={{ marginBottom: '20px' }}>
         <Link to="/" className="link-produtos">
-          ← Voltar para o Catálogo de Produtos
+          ← Voltar para o Catálogo
         </Link>
       </div>
 
