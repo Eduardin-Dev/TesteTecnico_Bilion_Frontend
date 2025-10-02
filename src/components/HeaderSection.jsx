@@ -57,25 +57,13 @@ export function HeroSection() {
       <div className="bilion-hero-mockups">
         {/* Renderiza as imagens/mockups do dashboard (placeholders) */}
         <div className="mockup-placeholder mockup-dark">
-          <img
-            className="mockup-img"
-            src="./../../public/cursoJavascript.png"
-            alt=""
-          />
+          <img className="mockup-img" src="cursoJavascript.png" alt="" />
         </div>
         <div className="mockup-placeholder mockup-main mockup-dark">
-          <img
-            className="mockup-img"
-            src="./../../public/cursoReact.jpg"
-            alt=""
-          />
+          <img className="mockup-img" src="cursoReact.jpg" alt="" />
         </div>
         <div className="mockup-placeholder mockup-dark">
-          <img
-            className="mockup-img"
-            src="./../../public/cursoNextJs.jpg"
-            alt=""
-          />
+          <img className="mockup-img" src="cursoNextJs.jpg" alt="" />
         </div>
       </div>
     </section>

@@ -12,10 +12,6 @@ function KpiCard({ titulo, valor, mudanca, icon }) {
       <div className="kpi-content">
         <p className="kpi-title">{titulo}</p>
         <h2 className="kpi-value">{valor}</h2>
-        <span className="kpi-change" style={changeStyle}>
-          {isPositive ? '▲ ' : '▼ '}
-          {mudanca}% vs Mês Passado
-        </span>
       </div>
     </div>
   );

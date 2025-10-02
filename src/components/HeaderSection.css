@@ -170,11 +170,10 @@
 }
 
 .mockup-img {
-  width: 100%; /* Garante que a imagem tenha a largura total do bloco */
-  height: 100%; /* Garante que a imagem tenha a altura total do bloco */
-  object-fit: cover; /* ESSENCIAL: Controla como a imagem se encaixa */
-border-radius: 8px;
-
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 .bilion-beneficios {
