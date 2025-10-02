@@ -39,7 +39,7 @@ export function HeroSection() {
     <section className="bilion-hero-section">
       <div className="bilion-hero-content">
         <h1 className="bilion-hero-title">
-          Venda seu curso <br />
+          Venda seu <span className="destaque">curso</span> <br />
           online
         </h1>
 
