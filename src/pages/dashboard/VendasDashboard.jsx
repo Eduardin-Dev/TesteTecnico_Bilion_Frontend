@@ -13,6 +13,7 @@ import './VendasDashboard.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Header } from '../../components/HeaderSection.jsx';
 
 // URL base da API
 const API_URL = 'https://testetecnicobilionbackend-production.up.railway.app';
@@ -91,6 +92,7 @@ function VendasDashboard() {
 
   return (
     <div className="dashboard-container">
+      <Header></Header>
       <h1>Dashboard de Vendas de Cursos</h1>
 
       <div style={{ marginBottom: '20px' }}>

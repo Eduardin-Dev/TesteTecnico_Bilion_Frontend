@@ -13,7 +13,11 @@ h1 {
     border-bottom: 2px solid #e9ecef;
     padding-bottom: 15px;
     margin-bottom: 30px;
+    margin-top: 50px;
     text-align: center;
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.1;
 }
 
 h2 {
@@ -63,13 +67,18 @@ h2 {
 }
 
 .link-produtos {
-    color: #007bff;
+    color: white;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s;
+    padding: 10px 20px;
+    background-color: #FF8C00;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 
 .link-produtos:hover {
-    color: #0056b3;
+    color: white;
     text-decoration: underline;
 }

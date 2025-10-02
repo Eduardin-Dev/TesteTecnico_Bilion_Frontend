@@ -1,0 +1,190 @@
+/* Container Principal da Página */
+.bilion-container {
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fc;
+    color: #333;
+    /* min-height: 100vh; */
+}
+
+/* ------------------ HEADER/NAVBAR ------------------ */
+
+.bilion-header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bilion-header-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.bilion-logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #C9A80A; /* Cor da Marca: Dourado */
+    display: flex;
+    align-items: center;
+}
+
+.bilion-icon {
+    /* Simulação do ícone circular dourado */
+    width: 20px;
+    height: 20px;
+    background-color: #C9A80A; 
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.bilion-nav a {
+    text-decoration: none;
+    color: #333;
+    margin-right: 20px;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.bilion-nav a:hover {
+    color: #C9A80A; /* Hover Dourado */
+}
+
+.bilion-header-right {
+    display: flex;
+    gap: 10px;
+}
+
+.bilion-btn-login {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.bilion-btn-cadastro {
+    text-decoration: none;
+    background-color: #fff;
+    color: #C9A80A; /* Borda e Texto Dourado */
+    border: 1px solid #C9A80A;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.bilion-btn-cadastro:hover {
+    background-color: #C9A80A; /* Fundo Dourado no Hover */
+    color: #fff;
+}
+
+/* ------------------ HERO SECTION ------------------ */
+
+.bilion-hero-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 40px 100px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* Fundo inclinado (Creme/Baunilha) */
+.bilion-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF8E1; /* Creme/Baunilha (substituindo o verde claro) */
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 100%); 
+    z-index: -1;
+}
+
+.bilion-hero-content {
+    max-width: 500px;
+    z-index: 1;
+}
+
+.bilion-hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.bilion-hero-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.bilion-btn-cta {
+    display: inline-block;
+    background-color: #FF8C00;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.bilion-btn-cta:hover {
+    background-color: #E67E00;
+}
+
+/* Mockups/Imagens no lado direito */
+.bilion-hero-mockups {
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding-left: 50px;
+}
+
+.mockup-placeholder {
+    /* Cor mais escura para combinar com o tema luxo/dourado */
+    background-color: #1C1C1C; 
+    border-radius: 8px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #C9A80A; /* Texto em Dourado */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mockup-main {
+    grid-row: span 2;
+    height: 315px; 
+}
+
+
+.bilion-beneficios {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+    padding: 40px 20px;
+}
+
+
+@media (max-width: 992px) {
+    /* Ajustes de responsividade (mantidos os mesmos que o Kiwify) */
+    .bilion-header { flex-direction: column; align-items: flex-start; padding: 20px; }
+    .bilion-header-left { flex-direction: column; align-items: flex-start; gap: 15px; margin-bottom: 15px; }
+    .bilion-nav { display: none; }
+    .bilion-hero-section { flex-direction: column; padding: 40px 20px; text-align: center; }
+    .bilion-hero-content { max-width: 100%; align-items: center; margin-bottom: 40px; }
+    .bilion-hero-title { font-size: 2.5rem; }
+    .bilion-hero-mockups { width: 100%; padding-left: 0; }
+}
